@@ -1,0 +1,22 @@
+apiVersion: container-security.emprovise.com/v1alpha1
+kind: ZyronContainerSecurity
+metadata:
+  name: sample
+  namespace: emprovise-system
+spec:
+  zyron:
+    bootstrapToken: bootstrap_token
+    endpoint: https://api.xdr.emprovise.com/external/v2/direct/vcs/external/vcs
+    exclusion:
+      namespaces: [kube-system, openshift, openshift-apiserver, openshift-apiserver-operator, openshift-aqua, openshift-authentication, openshift-authentication-operator, openshift-backplane, openshift-backplane-cee, openshift-backplane-srep, openshift-build-test, openshift-cloud-credential-operator, openshift-cloud-ingress-operator, openshift-cluster-csi-drivers, openshift-cluster-machine-approver, openshift-cluster-node-tuning-operator, openshift-cluster-samples-operator, openshift-cluster-storage-operator, openshift-cluster-version, openshift-codeready-workspaces, openshift-config, openshift-config-managed, openshift-config-operator, openshift-console, openshift-console-operator, openshift-console-user-settings, openshift-controller-manager, openshift-controller-manager-operator, openshift-custom-domains-operator, openshift-customer-monitoring, openshift-dns, openshift-dns-operator, openshift-etcd, openshift-etcd-operator, openshift-host-network, openshift-image-registry, openshift-infra, openshift-ingress, openshift-ingress-canary, openshift-ingress-operator, openshift-insights, openshift-kni-infra, openshift-kube-apiserver, openshift-kube-apiserver-operator, openshift-kube-controller-manager, openshift-kube-controller-manager-operator, openshift-kube-scheduler, openshift-kube-scheduler-operator, openshift-kube-storage-version-migrator, openshift-kube-storage-version-migrator-operator, openshift-kubevirt-infra, openshift-logging, openshift-machine-api, openshift-machine-config-operator, openshift-managed-upgrade-operator, openshift-marketplace, openshift-monitoring, openshift-multus, openshift-must-gather-operator, openshift-network-diagnostics, openshift-network-operator, openshift-node, openshift-oauth-apiserver, openshift-openstack-infra, openshift-operator-lifecycle-manager, openshift-operators, openshift-operators-redhat, openshift-osd-metrics, openshift-ovirt-infra, openshift-rbac-permissions, openshift-route-monitor-operator, openshift-sdn, openshift-security, openshift-service-ca, openshift-service-ca-operator, openshift-splunk-forwarder-operator, openshift-sre-pruning, openshift-sre-sshd, openshift-strimzi, openshift-user-workload-monitoring, openshift-validation-webhook, openshift-velero, openshift-vsphere-infra, openshift-addon-operator, openshift-backplane-managed-scripts, openshift-cloud-controller-manager-operator, openshift-cloud-network-config-controller, openshift-deployment-validation-operator, openshift-managed-node-metadata-operator, openshift-ocm-agent-operator, openshift-ovn-kubernetes, openshift-azure-operator, openshift-azure-loggi, openshift-cloud-controller-manager, openshift-nutanix-infra, openshift-route-controller-manager, dedicated-admin, default, openshift-aws-vpce-operator, openshift-backplane-csa, openshift-backplane-cse, openshift-backplane-csm, openshift-backplane-mobb, openshift-backplane-tam, openshift-cluster-api, openshift-compliance, openshift-compliance-monkey, openshift-container-security, openshift-file-integrity, openshift-observability-operator, openshift-platform-operators, openshift-scanning, openshift-suricata]
+    runtimeSecurity:
+      enabled: true
+    vulnerabilityScanning:
+      enabled: true
+    malwareScanning:
+      enabled: true
+    inventoryCollection:
+      enabled: true
+    secretScanning:
+      enabled: true
+    clusterRegistrationKey: false

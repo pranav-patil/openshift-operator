@@ -1,0 +1,23 @@
+# permissions for end users to view zyroncontainersecurities.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: zyron-containersecurity
+    app.kubernetes.io/managed-by: kustomize
+  name: viewer-role
+rules:
+- apiGroups:
+  - container-security.emprovise.com
+  resources:
+  - zyroncontainersecurities
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - container-security.emprovise.com
+  resources:
+  - zyroncontainersecurities/status
+  verbs:
+  - get

@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: zyron-containersecurity-catalog
+  namespace: emprovise-system
+spec:
+  sourceType: grpc
+  displayName: zyron Container Security Catalog
+  image: ${ZCS_OPERATOR_BASE_IMG_URL}/zyron-containersecurity-catalog:v${OPERATOR_VERSION}
+  publisher: Emprovise Inc
+  updateStrategy:
+    registryPoll:
+      interval: 30m

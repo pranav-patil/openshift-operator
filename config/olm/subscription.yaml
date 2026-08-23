@@ -1,0 +1,11 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: zyron-containersecurity-subscription
+  namespace: emprovise-system
+spec:
+  channel: alpha
+  name: zyron-containersecurity
+  source: zyron-containersecurity-catalog
+  sourceNamespace: emprovise-system
+  installPlanApproval: Automatic

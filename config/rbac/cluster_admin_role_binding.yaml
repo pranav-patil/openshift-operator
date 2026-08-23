@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crd-admin-role-binding
+subjects:
+- kind: ServiceAccount
+  name: controller-manager
+  namespace: emprovise-system # Ensure this matches the namespace of your operator's service account
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io

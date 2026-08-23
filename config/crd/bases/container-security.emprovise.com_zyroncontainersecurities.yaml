@@ -1,0 +1,136 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: zyroncontainersecurities.container-security.emprovise.com
+spec:
+  group: container-security.emprovise.com
+  names:
+    kind: ZyronContainerSecurity
+    listKind: ZyronContainerSecurityList
+    plural: zyroncontainersecurities
+    singular: zyroncontainersecurity
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        description: ZyronContainerSecurity is the Schema for the zyroncontainersecurities API
+        type: object
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ZyronContainerSecuritySpec defines the desired state of ZyronContainerSecurity.
+            type: object
+            properties:
+              zyron:
+                type: object
+                properties:
+                  bootstrapToken:
+                    type: string
+                  endpoint:
+                    type: string
+                  exclusion:
+                    type: object
+                    properties:
+                      namespaces:
+                        type: array
+                        items:
+                          type: string
+                      osNsPrefixes:
+                        type: array
+                        items:
+                          type: string
+                  runtimeSecurity:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                  vulnerabilityScanning:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                  malwareScanning:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                      excludedPaths:
+                        type: array
+                        items:
+                          type: string
+                      scanTimeoutSeconds:
+                        type: integer
+                  inventoryCollection:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                  secretScanning:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                  clusterRegistrationKey:
+                    type: boolean
+                  clusterName:
+                    type: string
+                  clusterNamePrefix:
+                    type: string
+                  policyId:
+                    type: string
+                  groupId:
+                    type: string
+                  policyOperator:
+                    type: object
+                    properties:
+                      clusterPolicyName:
+                        type: string
+                required:
+                  - endpoint
+            required:
+              - zyron
+          status:
+            description: Status defines the observed state of ZyronContainerSecurity
+            type: object
+            properties:
+              conditions:
+                description: Conditions represent the latest available observations of an object's state.
+                type: array
+                items:
+                  type: object
+                  required:
+                  - type
+                  - status
+                  properties:
+                    type:
+                      type: string
+                    status:
+                      type: string
+                    reason:
+                      type: string
+                    message:
+                      type: string
+                    lastTransitionTime:
+                      type: string
+                      format: date-time
+              deployedRelease:
+                description: Information about the deployed Helm release
+                type: object
+                x-kubernetes-preserve-unknown-fields: true
+    subresources:
+      status: {}

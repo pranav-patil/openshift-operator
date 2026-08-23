@@ -1,0 +1,11 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: container-monitoring.emprovise.com
+  version: v1alpha1
+  kind: KubeWatch
+  chart: helm-charts/kubewatch
+  dryRunOption: server
+  releaseName: emprovise-system
+  overrideValues:
+    namespace: emprovise-system
+    releaseIgnore: "containers"
+# +kubebuilder:scaffold:watch
